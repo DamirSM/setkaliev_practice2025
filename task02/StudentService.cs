@@ -19,7 +19,6 @@ public class StudentService
     public IEnumerable<Student> GetStudentsByFaculty(string faculty)
         => _students.Where(s => s.Faculty == faculty);
 
-
     public IEnumerable<Student> GetStudentsWithMinAverageGrade(double minAverageGrade)
         => _students.Where(s => s.Grades.Average() > minAverageGrade);
 
