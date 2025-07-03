@@ -1,0 +1,24 @@
+name: Main CI-pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - run: dotnet restore practice2025.sln
+
+      - name: Build
+        run: dotnet build practice2025.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test practice2025.sln --configuration Release --no-build
