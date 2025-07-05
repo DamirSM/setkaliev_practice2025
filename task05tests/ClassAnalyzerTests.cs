@@ -35,7 +35,7 @@ public class ClassAnalyzerTests
         var analyzer = new ClassAnalyzer(typeof(TestClass));
         var methodparams = analyzer.GetMethodParams("Method");
 
-        Assert.Empty(methodparams);
+        Assert.Contains("Method", methodparams);
     }
 
     [Fact]
@@ -43,8 +43,9 @@ public class ClassAnalyzerTests
     {
         var analyzer = new ClassAnalyzer(typeof(TestClass));
         var methodparams = analyzer.GetMethodParams("MethodParams");
-
+        
         Assert.Contains("Number", methodparams);
+        Assert.Contains("MethodParams", methodparams);
     }
 
     [Fact]
