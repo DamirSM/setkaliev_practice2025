@@ -22,13 +22,13 @@ public class ClassAnalyzer
 
     public IEnumerable<string> GetMethodParams(string methodname)
     {
-        IEnumerable<string> methodparams = _type.GetMethods().Where(m => m.Name == methodname).SelectMany(m => m.GetParameters()).Select(mp => mp.Name);
+        IEnumerable<string> methodparams = _type.GetMethods().Where(m => m.Name == methodname).SelectMany(m => m.GetParameters()).Select(mp => mp.Name ?? string.Empty);
         return methodparams;
     }
 
     public IEnumerable<string> GetAllFields()
     {
-        IEnumerable<string> fields = _type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).Select(f => f.Name);
+        IEnumerable<string> fields = _type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).Select(f => f.Name ?? string.Empty);
         return fields;
     }
 

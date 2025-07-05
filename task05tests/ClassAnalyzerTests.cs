@@ -11,6 +11,8 @@ public class TestClass
     public int Property { get; set; }
 
     public void Method() { }
+
+    public void MethodParams(int Number) {}
 }
 
 [Serializable]
@@ -28,12 +30,21 @@ public class ClassAnalyzerTests
     }
 
     [Fact]
-    public void GetMethodParams_ReturnsCorrectMethodParams()
+    public void GetMethodParams_WithoutParams_ReturnsEmptyMethodParams()
     {
         var analyzer = new ClassAnalyzer(typeof(TestClass));
         var methodparams = analyzer.GetMethodParams("Method");
 
         Assert.Empty(methodparams);
+    }
+
+    [Fact]
+    public void GetMethodParams_WithParams_ReturnsCorrectMethodParams()
+    {
+        var analyzer = new ClassAnalyzer(typeof(TestClass));
+        var methodparams = analyzer.GetMethodParams("MethodParams");
+
+        Assert.Contains("Number", methodparams);
     }
 
     [Fact]
