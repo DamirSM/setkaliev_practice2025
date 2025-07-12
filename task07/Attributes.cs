@@ -37,6 +37,26 @@ public class SampleClass
 
     [DisplayNameAttribute("Числовое свойство")]
     public int Number { get; set; }
+
+    public string String;
+
+    public SampleClass(int Number, string String)
+    {
+        this.Number = Number;
+        this.String = String;
+    }
+}
+
+public class SampleClass2
+{
+    public void TestMethod2() {}
+
+    public string String2 { get; set; }
+
+    public SampleClass2(string String2)
+    {
+        this.String2 = String2;
+    }
 }
 
 public static class ReflectionHelper
