@@ -17,14 +17,14 @@ public class Program
 
         foreach (var type in types)
         {
-            ICommand cmd = null;
+            ICommand? cmd = null;
             switch (type.Name)
             {
                 case "DirectorySizeCommand":
-                    cmd = (ICommand)Activator.CreateInstance(type, dir);
+                    cmd = (ICommand)Activator.CreateInstance(type, dir)!;
                     break;
                 case "FindFilesCommand":
-                    cmd = (ICommand)Activator.CreateInstance(type, dir, pattern);
+                    cmd = (ICommand)Activator.CreateInstance(type, dir, pattern)!;
                     break;
             };
             cmd?.Execute();
